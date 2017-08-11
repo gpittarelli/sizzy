@@ -41,7 +41,7 @@ class AppStore {
     allDevices,
     device => new Device(device)
   );
-  settings: Settings = new Settings(true);
+  settings: Settings = new Settings(true, this);
 
   /* Actions */
 

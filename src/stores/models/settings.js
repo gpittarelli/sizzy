@@ -1,16 +1,15 @@
 // @flow
 import type {DeviceSettings} from 'config/types';
 
-import store from 'stores/store';
-
 import {observable, action} from 'mobx';
 import ORIENTATIONS from 'config/orientations';
 import {getOppositeOrientation} from 'utils/utils';
 
 class Settings {
-  constructor(global: ?boolean) {
+  constructor(global: ?boolean, appStore: ?AppStore) {
     if (global) {
       this.global = global;
+      this.appStore = appStore;
     }
   }
 
@@ -48,7 +47,7 @@ class Settings {
   //if global zoom/orientation changed, update all devices
   @action modifyGlobalSettings = (settings: DeviceSettings) => {
     if (this.global === true) {
-      store.app.updateAllDevices(settings);
+      this.appStore.updateAllDevices(settings);
     }
   };
 
