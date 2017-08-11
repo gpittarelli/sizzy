@@ -16,6 +16,10 @@ import {Provider} from 'mobx-react';
 //router
 import {startRouter} from 'mobx-router';
 import views from 'config/views';
+
+
+
+export default function () {
 startRouter(views, store);
 
 ReactDOM.render(
@@ -24,3 +28,5 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
+}
